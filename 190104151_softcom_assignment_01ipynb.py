@@ -125,14 +125,15 @@ class CNNClassifier(nn.Module):
         super(CNNClassifier, self).__init__()
         self.cnn_layer_1 = nn.Conv2d(in_channels=1, out_channels=16,kernel_size=3, stride=1, padding=1)
         self.cnn_layer_2 = nn.Conv2d(in_channels=16, out_channels=32,kernel_size=3, stride=1, padding=1)
-
+        self.cnn_layer_3 = nn.Conv2d(in_channels=32, out_channels=48,kernel_size=3, stride=1, padding=1)
 
         self.flatten = nn.Flatten()
         self.maxpool = nn.MaxPool2d(2,2)
 
         self.linear_layer_1 = nn.Linear(32*64*64, 512)
-        self.linear_layer_2 = nn.Linear(512, 10)
-        self.linear_layer_3 = nn.Linear(10, 3)
+        self.linear_layer_2 = nn.Linear(512, 128)
+        self.linear_layer_3 = nn.Linear(128, 10)
+        self.linear_layer_4 = nn.Linear(10, 3)
 
         self.relu = nn.ReLU()
         self.sigmoid = nn.Sigmoid()
